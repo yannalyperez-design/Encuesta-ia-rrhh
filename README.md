@@ -1,1 +1,0 @@
-# Encuesta-ia-rrhh
