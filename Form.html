@@ -16,6 +16,13 @@
       <label>Apellido*</label><input type="text" id="apellido">
       <label>Área*</label>
       <select id="area"><option value="">Selecciona...</option></select>
+      <label>País*</label>
+      <select id="pais">
+        <option value="">Selecciona...</option>
+        <option>Venezuela</option>
+        <option>Colombia</option>
+        <option>Argentina</option>
+      </select>
       <label>Cédula*</label><input type="text" id="cedula">
     </div>
     <div id="preguntas">Cargando preguntas...</div>
@@ -91,8 +98,9 @@
     var nombre = document.getElementById('nombre').value.trim();
     var apellido = document.getElementById('apellido').value.trim();
     var area = document.getElementById('area').value;
+    var pais = document.getElementById('pais').value;
     var cedula = document.getElementById('cedula').value.trim();
-    if (!nombre || !apellido || !area || !cedula){
+    if (!nombre || !apellido || !area || !pais || !cedula){
       msg('Completa tus datos personales antes de continuar.', 'err'); return;
     }
     for (var i=0;i<preguntas.length;i++){
@@ -117,7 +125,7 @@
     }).withFailureHandler(function(err){
       msg('No se pudo guardar: ' + err.message, 'err');
       document.getElementById('btnEnviar').disabled = false;
-    }).guardarRespuesta({ nombre: nombre, apellido: apellido, area: area, cedula: cedula, respuestas: finalRespuestas });
+    }).guardarRespuesta({ nombre: nombre, apellido: apellido, area: area, pais: pais, cedula: cedula, respuestas: finalRespuestas });
   }
 
   function msg(t, cls){ document.getElementById('msg').innerHTML = '<div class="msg ' + cls + '">' + t + '</div>'; }
